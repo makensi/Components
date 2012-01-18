@@ -12,14 +12,23 @@
   See the License for the specific language governing permissions and 
   limitations under the License.
  -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="wrap_content"
-	android:layout_height="wrap_content">
 
-	<Button android:layout_height="wrap_content" android:id="@+id/increase_quantity"
-		android:layout_width="fill_parent" android:background="@drawable/increse_button" />
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-	<Button android:layout_height="wrap_content" android:id="@+id/decrease_quantity"
-		android:layout_width="fill_parent" android:background="@drawable/decrese_button" />
+	<!-- pressed state --> 
+	<item android:state_pressed="true" android:drawable="@drawable/timepicker_up_pressed">
+	</item>
 
-</LinearLayout>
+	<!-- focussed enable -->
+	<item android:state_focused="true" android:drawable="@drawable/timepicker_up_selected">
+	</item>
+
+	<!-- disable state -->
+	<item android:state_enabled="false" android:drawable="@drawable/timepicker_up_disabled">
+	</item>
+
+	<!-- normal state -->
+	<item android:drawable="@drawable/timepicker_up_normal">
+	</item>
+	
+</selector>
