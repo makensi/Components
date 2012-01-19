@@ -15,7 +15,7 @@
 package com.nc.components;
 
 import android.content.Context;
-import android.content.res.Resources;
+import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -23,9 +23,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
 
-public class Popup {
+public class FloatPopup {
 
-	private static final String TAG = Popup.class.getSimpleName();
+	private static final String TAG = FloatPopup.class.getSimpleName();
 
 	private PopupWindow popupWindow;
 
@@ -34,7 +34,7 @@ public class Popup {
 	 * 
 	 * @param context
 	 */
-	public Popup(Context context) {
+	public FloatPopup(Context context) {
 		if (Log.isLoggable(TAG, Log.DEBUG)) {
 			Log.d(TAG, "#constructor");
 		}
@@ -45,16 +45,14 @@ public class Popup {
 		popupWindow.setFocusable(true);
 		popupWindow.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
 		popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
-		// TEMPORAL
-		Resources resources = context.getResources();
-		popupWindow.setBackgroundDrawable(resources
-				.getDrawable(android.R.drawable.toast_frame));
+		popupWindow.setBackgroundDrawable(new BitmapDrawable());
 		// interceptor
 		popupWindow.setTouchInterceptor(new View.OnTouchListener() {
 
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				boolean result = false;
+				// click outside
 				if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
 					popupWindow.dismiss();
 					result = true;
@@ -88,9 +86,36 @@ public class Popup {
 		}
 		int positions[] = { 0, 0 };
 		parentView.getLocationOnScreen(positions);
-		int x = positions[0] - (parentView.getWidth() / 2);
-		int y = positions[1] + parentView.getHeight();
-		popupWindow.showAtLocation(parentView, Gravity.NO_GRAVITY,
-				x, y);
+
+		WindowManager windowManager = (WindowManager) parentView.getContext()
+				.getSystemService(Context.WINDOW_SERVICE);
+		
+		int maxX = windowManager.getDefaultDisplay().getWidth() / 2;
+		int maxY = windowManager.getDefaultDisplay().getHeight() / 2;
+		
+		int height = parentView.getHeight();
+		int width = parentView.getWidth();
+		int x = positions[0] - width;
+		int y = positions[1];
+		
+		if (x <= maxX && y <= maxY) { // -1,1
+			popupWindow.getContentView().setBackgroundResource(
+					R.drawable.popup_inline_top_left);
+			y = y + height;
+		} else if (x > maxX && y <= maxY) { // 1,1
+			popupWindow.getContentView().setBackgroundResource(
+					R.drawable.popup_inline_top_right);
+			y = y + height;
+		} else if (x <= maxX && y > maxY) { // -1,-1
+			popupWindow.getContentView().setBackgroundResource(
+					R.drawable.popup_inline_bottom_left);
+			y = y - (height * 2);
+		} else if (x > maxX && y > maxY) {// 1,-1
+			popupWindow.getContentView().setBackgroundResource(
+					R.drawable.popup_inline_bottom_right);
+			y = y - (height * 2);
+		}
+
+		popupWindow.showAtLocation(parentView, Gravity.NO_GRAVITY, x, y);
 	}
 }

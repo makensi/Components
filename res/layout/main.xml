@@ -12,13 +12,30 @@
   See the License for the specific language governing permissions and 
   limitations under the License.
  -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="fill_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
 
-	<com.nc.components.IntegerPicker
-		android:layout_height="wrap_content" android:id="@+id/text_component"
-		android:layout_width="wrap_content" android:text="@string/text.zero">
-	</com.nc.components.IntegerPicker>
+	<com.nc.components.IntegerPicker android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_height="wrap_content" android:id="@+id/text_left"
+		android:layout_width="wrap_content" android:text="@string/text.zero"
+		android:layout_marginLeft="20dp" />
+	
+	<com.nc.components.IntegerPicker android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_height="wrap_content" android:id="@+id/text_down_left" android:textColor="#00ff00"
+		android:layout_width="wrap_content" android:text="@string/text.zero"
+		android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
+		android:layout_marginLeft="20dp"/>
+	
+	<com.nc.components.IntegerPicker android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_height="wrap_content" android:id="@+id/text_right" android:textColor="#ff0000"
+		android:layout_width="wrap_content" android:text="@string/text.zero"
+		android:layout_alignParentRight="true" android:layout_marginRight="20dp"/>
+	
+	<com.nc.components.IntegerPicker android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_height="wrap_content" android:id="@+id/text_down_right" android:textColor="#0000ff"
+		android:layout_width="wrap_content" android:text="@string/text.zero"
+		android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
+		android:layout_marginRight="20dp" />
 
-</LinearLayout>
+</RelativeLayout>

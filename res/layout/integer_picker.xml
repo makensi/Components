@@ -16,10 +16,12 @@
 	android:orientation="vertical" android:layout_width="wrap_content"
 	android:layout_height="wrap_content">
 
-	<Button android:layout_height="wrap_content" android:id="@+id/increase_quantity"
+	<Button android:layout_height="wrap_content" android:layout_weight="1" 
+		android:layout_marginBottom="1dp" android:id="@+id/increase_quantity" 
 		android:layout_width="fill_parent" android:background="@drawable/increse_button" />
 
-	<Button android:layout_height="wrap_content" android:id="@+id/decrease_quantity"
-		android:layout_width="fill_parent" android:background="@drawable/decrese_button" />
+	<Button android:layout_height="wrap_content" android:layout_weight="1"
+		android:id="@+id/decrease_quantity" android:layout_width="fill_parent" 
+		android:background="@drawable/decrese_button" />
 
 </LinearLayout>

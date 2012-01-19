@@ -25,18 +25,36 @@ import android.widget.TextView;
 
 public class IntegerPicker extends TextView implements OnClickListener {
 
-	private Popup popup;
-	
+	private FloatPopup popup;
+
+	/**
+	 * Constructor
+	 * 
+	 * @param context
+	 */
 	public IntegerPicker(Context context) {
 		super(context);
 		init(context);
 	}
 
+	/**
+	 * Constructor
+	 * 
+	 * @param context
+	 * @param attrs
+	 */
 	public IntegerPicker(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		init(context);
 	}
 
+	/**
+	 * Constructor
+	 * 
+	 * @param context
+	 * @param attrs
+	 * @param defStyle
+	 */
 	public IntegerPicker(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		init(context);
@@ -48,15 +66,17 @@ public class IntegerPicker extends TextView implements OnClickListener {
 	 * @param context
 	 */
 	private void init(Context context) {
-		popup = new Popup(context);
+		popup = new FloatPopup(context);
 		this.setOnClickListener(this);
 		// inflating
-		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Service.LAYOUT_INFLATER_SERVICE);
+		LayoutInflater inflater = (LayoutInflater) context
+				.getSystemService(Service.LAYOUT_INFLATER_SERVICE);
 		View viewRoot = (View) inflater.inflate(R.layout.integer_picker, null);
 		// button increase and events
-		Button increase = (Button) viewRoot.findViewById(R.id.increase_quantity);
+		Button increase = (Button) viewRoot
+				.findViewById(R.id.increase_quantity);
 		increase.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				Integer value = Integer.parseInt(getText().toString());
@@ -65,13 +85,14 @@ public class IntegerPicker extends TextView implements OnClickListener {
 			}
 		});
 		// button increase and events
-		Button decrease = (Button) viewRoot.findViewById(R.id.decrease_quantity);
+		Button decrease = (Button) viewRoot
+				.findViewById(R.id.decrease_quantity);
 		decrease.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				Integer value = Integer.parseInt(getText().toString());
-				if(value>0){
+				if (value > 0) {
 					value--;
 					setText(value.toString());
 				}
