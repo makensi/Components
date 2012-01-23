@@ -12,17 +12,24 @@
   See the License for the specific language governing permissions and 
   limitations under the License.
  -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="wrap_content" 
-	android:layout_height="wrap_content" android:background="@drawable/popup">
 
-	<Button android:id="@+id/increase_quantity" 
-			style="@style/integer_picker_increase" />
-	
-	<TextView android:id="@+id/quantity_text" 
-			style="@style/integer_picker_quantity" />
 
-	<Button android:id="@+id/decrease_quantity" 
-			style="@style/integer_picker_decrease" />
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-</LinearLayout>
+	<item>
+		<shape>
+			<corners 
+				android:radius="7dp" />
+			<stroke 
+				android:width="1dp" 
+				android:color="#fafafa" />
+			<padding 
+				android:left="10dp" 
+				android:top="10dp" 
+				android:right="10dp"
+				android:bottom="10dp" />
+
+		</shape>
+	</item>
+
+</selector>

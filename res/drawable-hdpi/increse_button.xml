@@ -16,19 +16,95 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<!-- pressed state --> 
-	<item android:state_pressed="true" android:drawable="@drawable/timepicker_up_pressed">
+	<item android:state_pressed="true">
+		<shape>
+			<size android:width="70dp"/>
+			<corners 
+				android:topLeftRadius="5dp" 
+				android:topRightRadius="5dp" />
+			<gradient 
+				android:angle="90" 
+				android:startColor="#ffe389" 
+				android:centerColor="#ea9a00"
+				android:endColor="#fed323" />
+			<padding
+                android:left="10dp"
+                android:top="10dp"
+                android:right="10dp"
+                android:bottom="10dp" />
+        	<stroke 
+        		android:width="1dp" 
+        		android:color="#000000" />
+		</shape>
 	</item>
 
 	<!-- focussed enable -->
-	<item android:state_focused="true" android:drawable="@drawable/timepicker_up_selected">
+	<item android:state_focused="true">
+		<shape>
+			<size android:width="70dp"/>
+			<corners 
+				android:topLeftRadius="5dp" 
+				android:topRightRadius="5dp" />
+			<gradient 
+				android:angle="90" 
+				android:startColor="#ffcb8f" 
+				android:centerColor="#ed6300"
+				android:endColor="#feb44c" />
+			<padding
+                android:left="10dp"
+                android:top="10dp"
+                android:right="10dp"
+                android:bottom="10dp" />
+        	<stroke 
+        		android:width="1dp" 
+        		android:color="#000000" />
+		</shape>
 	</item>
 
 	<!-- disable state -->
-	<item android:state_enabled="false" android:drawable="@drawable/timepicker_up_disabled">
+	<item android:state_enabled="false">
+		<shape>
+			<size android:width="70dp"/>
+			<corners 
+				android:topLeftRadius="5dp" 
+				android:topRightRadius="5dp" />
+			<gradient 
+				android:angle="90" 
+				android:startColor="#626262" 
+				android:centerColor="#494949"
+				android:endColor="#626262" />
+			<padding
+                android:left="10dp"
+                android:top="10dp"
+                android:right="10dp"
+                android:bottom="10dp" />
+        	<stroke 
+        		android:width="1dp" 
+        		android:color="#00000000" />
+		</shape>
 	</item>
 
 	<!-- normal state -->
-	<item android:drawable="@drawable/timepicker_up_normal">
+	<item>
+		<shape>
+			<size android:width="70dp"/>
+			<corners 
+				android:topLeftRadius="5dp" 
+				android:topRightRadius="5dp" />
+			<gradient 
+				android:angle="90" 
+				android:startColor="#f7f7f7" 
+				android:centerColor="#c1c1c1"
+				android:endColor="#f7f7f7" />
+			<padding
+                android:left="10dp"
+                android:top="10dp"
+                android:right="10dp"
+                android:bottom="10dp" />
+        	<stroke 
+        		android:width="1dp" 
+        		android:color="#000000" />
+		</shape>
 	</item>
 	
 </selector>

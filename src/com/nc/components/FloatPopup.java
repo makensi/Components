@@ -84,38 +84,14 @@ public class FloatPopup {
 		if (Log.isLoggable(TAG, Log.DEBUG)) {
 			Log.d(TAG, "#show");
 		}
+
 		int positions[] = { 0, 0 };
 		parentView.getLocationOnScreen(positions);
-
-		WindowManager windowManager = (WindowManager) parentView.getContext()
-				.getSystemService(Context.WINDOW_SERVICE);
-		
-		int maxX = windowManager.getDefaultDisplay().getWidth() / 2;
-		int maxY = windowManager.getDefaultDisplay().getHeight() / 2;
-		
-		int height = parentView.getHeight();
-		int width = parentView.getWidth();
-		int x = positions[0] - width;
+		int x = positions[0];
 		int y = positions[1];
-		
-		if (x <= maxX && y <= maxY) { // -1,1
-			popupWindow.getContentView().setBackgroundResource(
-					R.drawable.popup_inline_top_left);
-			y = y + height;
-		} else if (x > maxX && y <= maxY) { // 1,1
-			popupWindow.getContentView().setBackgroundResource(
-					R.drawable.popup_inline_top_right);
-			y = y + height;
-		} else if (x <= maxX && y > maxY) { // -1,-1
-			popupWindow.getContentView().setBackgroundResource(
-					R.drawable.popup_inline_bottom_left);
-			y = y - (height * 2);
-		} else if (x > maxX && y > maxY) {// 1,-1
-			popupWindow.getContentView().setBackgroundResource(
-					R.drawable.popup_inline_bottom_right);
-			y = y - (height * 2);
-		}
 
-		popupWindow.showAtLocation(parentView, Gravity.NO_GRAVITY, x, y);
-	}
+		popupWindow.showAtLocation(
+				parentView.getRootView().findViewById(android.R.id.content),
+				Gravity.NO_GRAVITY, x, y);
+	} 
 }

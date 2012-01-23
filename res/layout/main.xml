@@ -18,22 +18,23 @@
 
 	<com.nc.components.IntegerPicker android:textAppearance="?android:attr/textAppearanceLarge"
 		android:layout_height="wrap_content" android:id="@+id/text_left"
-		android:layout_width="wrap_content" android:text="@string/text.zero"
+		android:layout_width="wrap_content" android:text="@string/text.zero" 
+		android:background="#ffffff" android:textColor="#000000"
 		android:layout_marginLeft="20dp" />
 	
 	<com.nc.components.IntegerPicker android:textAppearance="?android:attr/textAppearanceLarge"
-		android:layout_height="wrap_content" android:id="@+id/text_down_left" android:textColor="#00ff00"
+		android:layout_height="wrap_content" android:id="@+id/text_down_left" android:background="#00ff00"
 		android:layout_width="wrap_content" android:text="@string/text.zero"
 		android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
 		android:layout_marginLeft="20dp"/>
 	
 	<com.nc.components.IntegerPicker android:textAppearance="?android:attr/textAppearanceLarge"
-		android:layout_height="wrap_content" android:id="@+id/text_right" android:textColor="#ff0000"
+		android:layout_height="wrap_content" android:id="@+id/text_right" android:background="#ff0000"
 		android:layout_width="wrap_content" android:text="@string/text.zero"
 		android:layout_alignParentRight="true" android:layout_marginRight="20dp"/>
 	
 	<com.nc.components.IntegerPicker android:textAppearance="?android:attr/textAppearanceLarge"
-		android:layout_height="wrap_content" android:id="@+id/text_down_right" android:textColor="#0000ff"
+		android:layout_height="wrap_content" android:id="@+id/text_down_right" android:background="#0000ff"
 		android:layout_width="wrap_content" android:text="@string/text.zero"
 		android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
 		android:layout_marginRight="20dp" />

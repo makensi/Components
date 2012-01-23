@@ -23,6 +23,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.nc.ComponentsConstants;
+
 public class IntegerPicker extends TextView implements OnClickListener {
 
 	private FloatPopup popup;
@@ -72,9 +74,21 @@ public class IntegerPicker extends TextView implements OnClickListener {
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Service.LAYOUT_INFLATER_SERVICE);
 		View viewRoot = (View) inflater.inflate(R.layout.integer_picker, null);
-		// button increase and events
-		Button increase = (Button) viewRoot
+
+		final Button increase = (Button) viewRoot
 				.findViewById(R.id.increase_quantity);
+		final Button decrease = (Button) viewRoot
+				.findViewById(R.id.decrease_quantity);
+		final TextView quantity = (TextView) viewRoot
+				.findViewById(R.id.quantity_text);
+
+		// set text
+		quantity.setText(getText());
+		
+		// first disable
+		decrease.setEnabled(!getText().toString().equals(
+				ComponentsConstants.ZERO));
+
 		increase.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -82,11 +96,12 @@ public class IntegerPicker extends TextView implements OnClickListener {
 				Integer value = Integer.parseInt(getText().toString());
 				value++;
 				setText(value.toString());
+				quantity.setText(value.toString());
+				// enable
+				decrease.setEnabled(true);
 			}
 		});
-		// button increase and events
-		Button decrease = (Button) viewRoot
-				.findViewById(R.id.decrease_quantity);
+		
 		decrease.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -95,9 +110,14 @@ public class IntegerPicker extends TextView implements OnClickListener {
 				if (value > 0) {
 					value--;
 					setText(value.toString());
+					quantity.setText(value.toString());
 				}
+				// disable
+				decrease.setEnabled(!getText().toString().equals(
+						ComponentsConstants.ZERO));
 			}
 		});
+		
 		popup.setContentView(viewRoot);
 	}
 
@@ -105,5 +125,5 @@ public class IntegerPicker extends TextView implements OnClickListener {
 	public void onClick(View view) {
 		popup.show(view);
 	}
-
+	
 }
