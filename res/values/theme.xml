@@ -16,22 +16,23 @@
  <resources>
 
 
-	<style name="integer_picker_element">
+	<style name="nc_components_integer_picker_element">
 		<item name="android:gravity">center_horizontal|center_vertical</item>
 		<item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
 	</style>
 	
-	<style name="integer_picker_increase" parent="integer_picker_element">
+	<style name="nc_components_integer_picker_increase" parent="nc_components_integer_picker_element">
 		<item name="android:text">+</item>
 		<item name="android:background">@drawable/increse_button</item>
 	</style>
 
-	<style name="integer_picker_quantity" parent="integer_picker_element">
+	<style name="nc_components_integer_picker_quantity" parent="nc_components_integer_picker_element">
+	
 	</style>
 
-	<style name="integer_picker_decrease" parent="integer_picker_element"> 
+	<style name="nc_components_integer_picker_decrease" parent="nc_components_integer_picker_element"> 
 		<item name="android:text">-</item>
 		<item name="android:background">@drawable/decrese_button</item>
 	</style>

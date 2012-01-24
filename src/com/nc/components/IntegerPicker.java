@@ -88,7 +88,7 @@ public class IntegerPicker extends TextView implements OnClickListener {
 		// inflating
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Service.LAYOUT_INFLATER_SERVICE);
-		View viewRoot = (View) inflater.inflate(R.layout.integer_picker, null);
+		View viewRoot = (View) inflater.inflate(R.layout.nc_components_integer_picker, null);
 
 		final Button increase = (Button) viewRoot
 				.findViewById(R.id.increase_quantity);

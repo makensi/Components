@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Components</string>
-    <string name="text.zero">0</string>
+    <string name="nc_components_app_name">Components</string>
+    <string name="nc_components_text_zero">0</string>
 </resources>

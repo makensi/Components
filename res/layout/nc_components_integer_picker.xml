@@ -17,12 +17,12 @@
 	android:layout_height="wrap_content" android:background="@drawable/popup">
 
 	<Button android:id="@+id/increase_quantity" 
-			style="@style/integer_picker_increase" />
+			style="@style/nc_components_integer_picker_increase" />
 	
 	<TextView android:id="@+id/quantity_text" 
-			style="@style/integer_picker_quantity" />
+			style="@style/nc_components_integer_picker_quantity" />
 
 	<Button android:id="@+id/decrease_quantity" 
-			style="@style/integer_picker_decrease" />
+			style="@style/nc_components_integer_picker_decrease" />
 
 </LinearLayout>

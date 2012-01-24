@@ -1,0 +1,18 @@
+{
+	"name" : "nc-components",
+	"description" : "nuevascreaciones.com custom components",
+	"version" : "0.0.1-beta",
+	"maintainers" :  [{
+		"name" : "Raul de la Hoz Garrido",
+		"web" : "http://nuevascreaciones.com"
+	}],
+	"licences" : [{
+		"type" : "Apache License, 2.0",
+		"url" :"http://www.apache.org/licenses/LICENSE-2.0"
+	}],
+	"homepage" : "https://github.com/makensi/Components",
+	"repositories" : [{
+		"type" : "git",
+		"url" : "git@github.com:makensi/Components.git"
+	}]
+}
