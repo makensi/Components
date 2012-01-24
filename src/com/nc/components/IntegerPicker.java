@@ -17,6 +17,7 @@ package com.nc.components;
 import android.app.Service;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,6 +28,8 @@ import com.nc.ComponentsConstants;
 
 public class IntegerPicker extends TextView implements OnClickListener {
 
+	private static final String TAG = IntegerPicker.class.getSimpleName();
+
 	private FloatPopup popup;
 
 	/**
@@ -36,6 +39,9 @@ public class IntegerPicker extends TextView implements OnClickListener {
 	 */
 	public IntegerPicker(Context context) {
 		super(context);
+		if (Log.isLoggable(TAG, Log.DEBUG)) {
+			Log.d(TAG, "#constructor");
+		}
 		init(context);
 	}
 
@@ -47,6 +53,9 @@ public class IntegerPicker extends TextView implements OnClickListener {
 	 */
 	public IntegerPicker(Context context, AttributeSet attrs) {
 		super(context, attrs);
+		if (Log.isLoggable(TAG, Log.DEBUG)) {
+			Log.d(TAG, "#constructor");
+		}
 		init(context);
 	}
 
@@ -59,6 +68,9 @@ public class IntegerPicker extends TextView implements OnClickListener {
 	 */
 	public IntegerPicker(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
+		if (Log.isLoggable(TAG, Log.DEBUG)) {
+			Log.d(TAG, "#constructor");
+		}
 		init(context);
 	}
 
@@ -68,6 +80,9 @@ public class IntegerPicker extends TextView implements OnClickListener {
 	 * @param context
 	 */
 	private void init(Context context) {
+		if (Log.isLoggable(TAG, Log.DEBUG)) {
+			Log.d(TAG, "#init");
+		}
 		popup = new FloatPopup(context);
 		this.setOnClickListener(this);
 		// inflating
@@ -84,7 +99,7 @@ public class IntegerPicker extends TextView implements OnClickListener {
 
 		// set text
 		quantity.setText(getText());
-		
+
 		// first disable
 		decrease.setEnabled(!getText().toString().equals(
 				ComponentsConstants.ZERO));
@@ -93,6 +108,9 @@ public class IntegerPicker extends TextView implements OnClickListener {
 
 			@Override
 			public void onClick(View v) {
+				if (Log.isLoggable(TAG, Log.DEBUG)) {
+					Log.d(TAG, "increase#setOnClickListener#onclick");
+				}
 				Integer value = Integer.parseInt(getText().toString());
 				value++;
 				setText(value.toString());
@@ -101,11 +119,14 @@ public class IntegerPicker extends TextView implements OnClickListener {
 				decrease.setEnabled(true);
 			}
 		});
-		
+
 		decrease.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
+				if (Log.isLoggable(TAG, Log.DEBUG)) {
+					Log.d(TAG, "decrease#setOnClickListener#onclick");
+				}
 				Integer value = Integer.parseInt(getText().toString());
 				if (value > 0) {
 					value--;
@@ -117,13 +138,16 @@ public class IntegerPicker extends TextView implements OnClickListener {
 						ComponentsConstants.ZERO));
 			}
 		});
-		
+
 		popup.setContentView(viewRoot);
 	}
 
 	@Override
 	public void onClick(View view) {
+		if (Log.isLoggable(TAG, Log.DEBUG)) {
+			Log.d(TAG, "#onClick");
+		}
 		popup.show(view);
 	}
-	
+
 }
