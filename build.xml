@@ -27,7 +27,7 @@
 	<target name="build" description="create dist component jar">
 		<delete dir="dist" />
 		<mkdir dir="dist" />
-		<jar destfile="dist/${name}.${version}.jar" basedir="bin" excludes="*.apk, *.ap_, *.dex">
+		<jar destfile="dist/${name}_${version}.jar" basedir="bin" excludes="*.apk, *.ap_, *.dex">
 			<manifest>
 				<attribute name="Built-By" value="${user.name}" />
 				<attribute name="Implementation-Title" value="${name}" />
