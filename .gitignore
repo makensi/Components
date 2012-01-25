@@ -1,5 +1,5 @@
 /bin
 /dist
 /gen
-/ComponentTest/bin
-/ComponentTest/gen
+/test/bin
+/test/gen
