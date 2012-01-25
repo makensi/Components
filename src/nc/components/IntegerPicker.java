@@ -13,8 +13,9 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package com.nc.components;
+package nc.components;
 
+import nc.ComponentsConstants;
 import android.app.Service;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -25,7 +26,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.nc.ComponentsConstants;
+import com.nc.components.R;
 
 public class IntegerPicker extends TextView implements OnClickListener {
 

@@ -1,5 +1,6 @@
-/*
-	Copyright 2012 Raœl de la Hoz Garrido
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	Copyright 2012 RaÃºl de la Hoz Garrido
 
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
@@ -12,16 +13,24 @@
 	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 	See the License for the specific language governing permissions and
 	limitations under the License.
-*/
-package com.nc;
+ -->
 
-public class ComponentsConstants {
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-	/**
-	 * Default constructor
-	 */
-	private ComponentsConstants() {
-	}
+	<item>
+		<shape>
+			<corners 
+				android:radius="7dp" />
+			<stroke 
+				android:width="1dp" 
+				android:color="#fafafa" />
+			<padding 
+				android:left="10dp" 
+				android:top="10dp" 
+				android:right="10dp"
+				android:bottom="10dp" />
 
-	public static final String ZERO = "0";
-}
+		</shape>
+	</item>
+
+</selector>

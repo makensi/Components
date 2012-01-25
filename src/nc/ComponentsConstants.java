@@ -13,22 +13,15 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-{
-	"name" : "nc-components",
-	"description" : "nuevascreaciones.com custom components",
-	"version" : "0.0.1-beta",
-	"maintainers" :  [{
-		"name" : "Raul de la Hoz Garrido",
-		"web" : "http://nuevascreaciones.com"
-	}],
-	"licences" : [{
-		"type" : "Apache License, 2.0",
-		"url" :"http://www.apache.org/licenses/LICENSE-2.0"
-	}],
-	"dependencies" : [],
-	"homepage" : "https://github.com/makensi/Components",
-	"repositories" : [{
-		"type" : "git",
-		"url" : "git@github.com:makensi/Components.git"
-	}]
+package nc;
+
+public class ComponentsConstants {
+
+	/**
+	 * Default constructor
+	 */
+	private ComponentsConstants() {
+	}
+
+	public static final String ZERO = "0";
 }
