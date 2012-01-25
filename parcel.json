@@ -25,7 +25,6 @@
 		"type" : "Apache License, 2.0",
 		"url" :"http://www.apache.org/licenses/LICENSE-2.0"
 	}],
-	"dependencies" : [],
 	"homepage" : "https://github.com/makensi/Components",
 	"repositories" : [{
 		"type" : "git",

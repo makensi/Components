@@ -42,7 +42,7 @@
 			<arg value="--dir" />
 			<arg value="dist" /> 
 			<arg value="-j" /> 
-			<arg value="dist/${name}.${version}.jar" />
+			<arg value="dist/${name}_${version}.jar" />
 			<arg value="-d" />
 			<arg value="README" /> 
 			<arg value="LICENSE" />
