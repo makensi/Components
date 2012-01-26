@@ -20,7 +20,7 @@
 	<property name="name" value="nc-components" />
 	<property name="version" value="0.0.1-beta" />
 	<property name="company" value="nuevascreaciones" />
-	
+
 	<!-- ================================= 
           target: build              
          ================================= -->
@@ -35,17 +35,41 @@
 				<attribute name="Implementation-Vendor" value="${company}" />
 			</manifest>
 		</jar>
-		
-		<exec executable="parcel"> 
-			<arg value="package" /> 
-			<arg value="parcel.json" /> 
+
+		<exec executable="parcel">
+			<arg value="package" />
+			<arg value="parcel.json" />
 			<arg value="--dir" />
-			<arg value="dist" /> 
-			<arg value="-j" /> 
+			<arg value="dist" />
+			<arg value="-j" />
 			<arg value="dist/${name}_${version}.jar" />
 			<arg value="-d" />
-			<arg value="README" /> 
+			<arg value="README" />
 			<arg value="LICENSE" />
+		</exec>
+
+	</target>
+
+	<!-- ================================= 
+		 target: deploy-parcel-in-test              
+	    ================================= -->
+	<target name="deploy-parcel-in-test" description="add parcel to test project">
+
+		<exec executable="parcel" dir="test">
+			<arg value="install" />
+			<arg value="../dist/${name}_${version}.zip" />
+		</exec>
+		
+	</target>
+	
+	<!-- ================================= 
+    	 target: deploy-parcel-in-test              
+		================================= -->
+	<target name="undeploy-parcel-in-test" description="add parcel to test project">
+
+		<exec executable="parcel" dir="test">
+			<arg value="remove" />
+			<arg value="${name}" />
 		</exec>
 
 	</target>
