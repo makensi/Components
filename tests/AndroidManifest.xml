@@ -18,14 +18,14 @@
 	<uses-sdk android:minSdkVersion="10"/>
 
 	<application>
-		<activity android:name="nc.activity.IntegerPickerActivity" android:label="@string/app_name">
+		<activity android:name=".activity.IntegerPickerActivity" android:label="@string/app_name">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
 		</activity>
 		
-		<uses-library android:required="true" android:name="nc.components"></uses-library>
+		<uses-library android:required="true" android:name="nc.components"/>
 
 	</application>
 	
