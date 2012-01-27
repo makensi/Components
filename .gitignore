@@ -1,5 +1,13 @@
+.DS_Store
+*~
+*.swp
 /bin
+/bin/*
 /dist
+/dist/*
 /gen
-/test/bin
-/test/gen
+/gen/*
+/tests/bin
+/tests/bin/*
+/tests/gen
+/tests/gen/*

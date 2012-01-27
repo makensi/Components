@@ -24,6 +24,9 @@
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
 		</activity>
+		
+		<uses-library android:required="true" android:name="nc.components"></uses-library>
 
 	</application>
+	
 </manifest>

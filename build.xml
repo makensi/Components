@@ -55,7 +55,7 @@
 	    ================================= -->
 	<target name="deploy-parcel-in-test" description="add parcel to test project">
 
-		<exec executable="parcel" dir="test">
+		<exec executable="parcel" dir="tests">
 			<arg value="install" />
 			<arg value="../dist/${name}_${version}.zip" />
 		</exec>
@@ -67,7 +67,7 @@
 		================================= -->
 	<target name="undeploy-parcel-in-test" description="add parcel to test project">
 
-		<exec executable="parcel" dir="test">
+		<exec executable="parcel" dir="tests">
 			<arg value="remove" />
 			<arg value="${name}" />
 		</exec>
