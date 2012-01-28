@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- 
+/*
 	Copyright 2012 Raul de la Hoz Garrido
 
 	Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,24 +12,23 @@
 	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 	See the License for the specific language governing permissions and
 	limitations under the License.
- -->
+*/
+package nc.tests.activity;
 
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+import nc.tests.R;
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.PopupWindow;
 
-	<item>
-		<shape>
-			<corners 
-				android:radius="7dp" />
-			<stroke 
-				android:width="1dp" 
-				android:color="#fafafa" />
-			<padding 
-				android:left="10dp" 
-				android:top="10dp" 
-				android:right="10dp"
-				android:bottom="10dp" />
-
-		</shape>
-	</item>
-
-</selector>
+public class IntegerPickerActivity extends Activity {
+	
+	PopupWindow pw;
+	
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+        setContentView(R.layout.main);
+    }
+    
+}

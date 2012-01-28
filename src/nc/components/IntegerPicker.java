@@ -26,8 +26,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.nc.components.R;
-
 public class IntegerPicker extends TextView implements OnClickListener {
 
 	private static final String TAG = IntegerPicker.class.getSimpleName();
