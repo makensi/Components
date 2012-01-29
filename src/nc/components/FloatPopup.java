@@ -12,7 +12,7 @@
 	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 	See the License for the specific language governing permissions and
 	limitations under the License.
-*/
+ */
 package nc.components;
 
 import android.content.Context;
@@ -23,6 +23,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
 
 public class FloatPopup {
 
@@ -47,7 +48,7 @@ public class FloatPopup {
 		popupWindow.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
 		popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
 		popupWindow.setBackgroundDrawable(new BitmapDrawable());
-		// interceptor
+		// events
 		popupWindow.setTouchInterceptor(new View.OnTouchListener() {
 
 			@Override
@@ -94,5 +95,15 @@ public class FloatPopup {
 		popupWindow.showAtLocation(
 				parentView.getRootView().findViewById(android.R.id.content),
 				Gravity.NO_GRAVITY, x, y);
-	} 
+	}
+
+	/**
+	 * Allow execute extra actions after dismiss
+	 * 
+	 * @param dismissListener
+	 */
+	public void setOnDismissListener(OnDismissListener dismissListener) {
+		popupWindow.setOnDismissListener(dismissListener);
+	}
+
 }
