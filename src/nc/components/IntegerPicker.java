@@ -95,17 +95,16 @@ public class IntegerPicker extends TextView implements OnClickListener {
 		popup = new FloatPopup(context);
 		this.setOnClickListener(this);
 
-		// event dismis 
+		// event dismis
 		popup.setOnDismissListener(new OnDismissListener() {
-			
+
 			@Override
 			public void onDismiss() {
-				if(onSetValueListener!=null){
+				if (onSetValueListener != null) {
 					onSetValueListener.onSetValue(IntegerPicker.this);
 				}
 			}
 		});
-
 
 		// inflating
 		LayoutInflater inflater = (LayoutInflater) context
@@ -139,6 +138,7 @@ public class IntegerPicker extends TextView implements OnClickListener {
 				value++;
 				setText(value.toString());
 				quantity.setText(value.toString());
+				// event
 				if (onChangeValueListener != null) {
 					onChangeValueListener.onValueChange(IntegerPicker.this);
 				}
@@ -160,6 +160,7 @@ public class IntegerPicker extends TextView implements OnClickListener {
 					value--;
 					setText(value.toString());
 					quantity.setText(value.toString());
+					// event
 					if (onChangeValueListener != null) {
 						onChangeValueListener.onValueChange(IntegerPicker.this);
 					}
@@ -169,7 +170,7 @@ public class IntegerPicker extends TextView implements OnClickListener {
 						ComponentsConstants.ZERO));
 			}
 		});
-		
+
 		popup.setContentView(viewRoot);
 	}
 
@@ -208,6 +209,12 @@ public class IntegerPicker extends TextView implements OnClickListener {
 	 */
 	public interface OnValueChangeListener {
 
+		/**
+		 * Value change event
+		 * 
+		 * @param view
+		 *            text view
+		 */
 		public void onValueChange(View view);
 
 	}
@@ -220,6 +227,12 @@ public class IntegerPicker extends TextView implements OnClickListener {
 	 */
 	public interface OnSetValueListener {
 
+		/**
+		 * Set value event
+		 * 
+		 * @param view
+		 *            text view
+		 */
 		public void onSetValue(View view);
 
 	}
