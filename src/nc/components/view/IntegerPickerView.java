@@ -13,9 +13,11 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
  */
-package nc.components;
+package nc.components.view;
 
-import nc.ComponentsConstants;
+import nc.components.ComponentsConstants;
+import nc.components.R;
+import nc.components.widget.FloatPopupWindow;
 import android.app.Service;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -28,29 +30,34 @@ import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 
 /**
- * Text view with edition features.
+ * Integer Picker View
+ * 
+ * Android Text view with edition features. It create a widget Popup Window with
+ * two buttons which allows increase or decrease text integer value.
  * 
  * @author makensi
  * 
  */
-public class IntegerPicker extends TextView implements OnClickListener {
+public class IntegerPickerView extends TextView implements OnClickListener {
 
-	private static final String TAG = IntegerPicker.class.getSimpleName();
+	// contstants
+	private static final String TAG = IntegerPickerView.class.getSimpleName();
 
-	private FloatPopup popup;
+	// properties
+	private FloatPopupWindow popup;
 	private OnValueChangeListener onChangeValueListener;
 	private OnSetValueListener onSetValueListener;
+	private Button increase;
+	private Button decrease;
+	private TextView quantity;
 
 	/**
 	 * Constructor
 	 * 
 	 * @param context
 	 */
-	public IntegerPicker(Context context) {
+	public IntegerPickerView(Context context) {
 		super(context);
-		if (Log.isLoggable(TAG, Log.DEBUG)) {
-			Log.d(TAG, "#constructor");
-		}
 		init(context);
 	}
 
@@ -59,12 +66,10 @@ public class IntegerPicker extends TextView implements OnClickListener {
 	 * 
 	 * @param context
 	 * @param attrs
+	 *            component attributes
 	 */
-	public IntegerPicker(Context context, AttributeSet attrs) {
+	public IntegerPickerView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		if (Log.isLoggable(TAG, Log.DEBUG)) {
-			Log.d(TAG, "#constructor");
-		}
 		init(context);
 	}
 
@@ -73,13 +78,12 @@ public class IntegerPicker extends TextView implements OnClickListener {
 	 * 
 	 * @param context
 	 * @param attrs
+	 *            component attributes
 	 * @param defStyle
+	 *            ignored by andoid API
 	 */
-	public IntegerPicker(Context context, AttributeSet attrs, int defStyle) {
+	public IntegerPickerView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		if (Log.isLoggable(TAG, Log.DEBUG)) {
-			Log.d(TAG, "#constructor");
-		}
 		init(context);
 	}
 
@@ -92,37 +96,33 @@ public class IntegerPicker extends TextView implements OnClickListener {
 		if (Log.isLoggable(TAG, Log.DEBUG)) {
 			Log.d(TAG, "#init");
 		}
-		popup = new FloatPopup(context);
+
+		// register click event
 		this.setOnClickListener(this);
 
-		// event dismis
+		// we create popup window
+		popup = new FloatPopupWindow(context);
+		// set event dismis in popup window
 		popup.setOnDismissListener(new OnDismissListener() {
 
 			@Override
 			public void onDismiss() {
 				if (onSetValueListener != null) {
-					onSetValueListener.onSetValue(IntegerPicker.this);
+					onSetValueListener.onSetValue(IntegerPickerView.this);
 				}
 			}
 		});
 
-		// inflating
+		// inflating view & and views
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Service.LAYOUT_INFLATER_SERVICE);
 		View viewRoot = (View) inflater.inflate(
 				R.layout.nc_components_integer_picker, null);
+		increase = (Button) viewRoot.findViewById(R.id.increase_quantity);
+		decrease = (Button) viewRoot.findViewById(R.id.decrease_quantity);
+		quantity = (TextView) viewRoot.findViewById(R.id.quantity_text);
 
-		final Button increase = (Button) viewRoot
-				.findViewById(R.id.increase_quantity);
-		final Button decrease = (Button) viewRoot
-				.findViewById(R.id.decrease_quantity);
-		final TextView quantity = (TextView) viewRoot
-				.findViewById(R.id.quantity_text);
-
-		// set text
-		quantity.setText(getText());
-
-		// first disable
+		// set disable increase button if start value is 0
 		decrease.setEnabled(!getText().toString().equals(
 				ComponentsConstants.ZERO));
 
@@ -138,9 +138,9 @@ public class IntegerPicker extends TextView implements OnClickListener {
 				value++;
 				setText(value.toString());
 				quantity.setText(value.toString());
-				// event
+				// change value event
 				if (onChangeValueListener != null) {
-					onChangeValueListener.onValueChange(IntegerPicker.this);
+					onChangeValueListener.onValueChange(IntegerPickerView.this);
 				}
 				// enable
 				decrease.setEnabled(true);
@@ -160,9 +160,10 @@ public class IntegerPicker extends TextView implements OnClickListener {
 					value--;
 					setText(value.toString());
 					quantity.setText(value.toString());
-					// event
+					// change value event
 					if (onChangeValueListener != null) {
-						onChangeValueListener.onValueChange(IntegerPicker.this);
+						onChangeValueListener
+								.onValueChange(IntegerPickerView.this);
 					}
 				}
 				// disable
@@ -171,7 +172,23 @@ public class IntegerPicker extends TextView implements OnClickListener {
 			}
 		});
 
+		// set popup content view
 		popup.setContentView(viewRoot);
+	}
+
+	/**
+	 * (non-Javadoc)
+	 * 
+	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	 */
+	@Override
+	public void onClick(View view) {
+		if (Log.isLoggable(TAG, Log.DEBUG)) {
+			Log.d(TAG, "#onClick");
+		}
+		// set text
+		quantity.setText(getText());
+		popup.show(view);
 	}
 
 	/**
@@ -193,14 +210,6 @@ public class IntegerPicker extends TextView implements OnClickListener {
 		this.onSetValueListener = onSetValueListener;
 	}
 
-	@Override
-	public void onClick(View view) {
-		if (Log.isLoggable(TAG, Log.DEBUG)) {
-			Log.d(TAG, "#onClick");
-		}
-		popup.show(view);
-	}
-
 	/**
 	 * Interface to represent value change event
 	 * 
@@ -210,10 +219,10 @@ public class IntegerPicker extends TextView implements OnClickListener {
 	public interface OnValueChangeListener {
 
 		/**
-		 * Value change event
+		 * Event executed after click in increase or decrease buttons
 		 * 
 		 * @param view
-		 *            text view
+		 *            current IntegerPickerView reference
 		 */
 		public void onValueChange(View view);
 
@@ -228,10 +237,10 @@ public class IntegerPicker extends TextView implements OnClickListener {
 	public interface OnSetValueListener {
 
 		/**
-		 * Set value event
+		 * Event executed after popup closed
 		 * 
 		 * @param view
-		 *            text view
+		 *            current IntegerPickerView reference
 		 */
 		public void onSetValue(View view);
 

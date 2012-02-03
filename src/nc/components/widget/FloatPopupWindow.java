@@ -13,7 +13,7 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
  */
-package nc.components;
+package nc.components.widget;
 
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
@@ -25,10 +25,21 @@ import android.view.WindowManager;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 
-public class FloatPopup {
+/**
+ * Float Popup
+ * 
+ * Utility class that allows to works with PopupWindow and give several event to
+ * manage several actions.
+ * 
+ * @author makensi
+ * 
+ */
+public class FloatPopupWindow {
 
-	private static final String TAG = FloatPopup.class.getSimpleName();
+	// constants
+	private static final String TAG = FloatPopupWindow.class.getSimpleName();
 
+	// properties
 	private PopupWindow popupWindow;
 
 	/**
@@ -36,7 +47,7 @@ public class FloatPopup {
 	 * 
 	 * @param context
 	 */
-	public FloatPopup(Context context) {
+	public FloatPopupWindow(Context context) {
 		if (Log.isLoggable(TAG, Log.DEBUG)) {
 			Log.d(TAG, "#constructor");
 		}
@@ -49,6 +60,7 @@ public class FloatPopup {
 		popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
 		popupWindow.setBackgroundDrawable(new BitmapDrawable());
 		// events
+		// set touch interceptor to listen click out popup event.
 		popupWindow.setTouchInterceptor(new View.OnTouchListener() {
 
 			@Override
@@ -66,7 +78,7 @@ public class FloatPopup {
 	}
 
 	/**
-	 * Set the content of popup
+	 * Set content view used by popupWindow
 	 * 
 	 * @param contentView
 	 */
@@ -78,7 +90,7 @@ public class FloatPopup {
 	}
 
 	/**
-	 * Shows popup
+	 * Show popup
 	 * 
 	 * @param parentView
 	 */
@@ -98,11 +110,15 @@ public class FloatPopup {
 	}
 
 	/**
-	 * Allow execute extra actions after dismiss
+	 * Allow set the default PopupWindow dismiss event class to manage pupup
+	 * close event
 	 * 
 	 * @param dismissListener
 	 */
 	public void setOnDismissListener(OnDismissListener dismissListener) {
+		if (Log.isLoggable(TAG, Log.DEBUG)) {
+			Log.d(TAG, "#setOnDismissListener");
+		}
 		popupWindow.setOnDismissListener(dismissListener);
 	}
 
