@@ -15,26 +15,29 @@
 	limitations under the License.
  -->
  
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="wrap_content" 
-	android:layout_height="wrap_content" android:background="@drawable/nc_components_popup">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:id="@+id/nc_components_popup"
+	android:orientation="vertical" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content" 
+	android:background="@drawable/nc_components_popup">
 
-	<Button android:id="@+id/increase_quantity" 
-			android:text="+" 
+	<Button android:id="@+id/nc_components_increase_quantity" 
+			android:text="@string/nc_components_text_increase" 
 			android:background="@drawable/nc_components_increse_button"
 			android:gravity="center_horizontal|center_vertical"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content" 
 			android:textAppearance="?android:attr/textAppearanceLarge" />
 	
-	<TextView android:id="@+id/quantity_text" 
+	<TextView android:id="@+id/nc_components_quantity_text" 
 			android:gravity="center_horizontal|center_vertical"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content" 
 			android:textAppearance="?android:attr/textAppearanceLarge" />
 
-	<Button android:id="@+id/decrease_quantity" 
-			android:text="-" 
+	<Button android:id="@+id/nc_components_decrease_quantity"  
+			android:text="@string/nc_components_text_decrease"
 			android:background="@drawable/nc_components_decrese_button"
 			android:gravity="center_horizontal|center_vertical"
 			android:layout_width="fill_parent"

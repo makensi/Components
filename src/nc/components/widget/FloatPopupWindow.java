@@ -99,14 +99,30 @@ public class FloatPopupWindow {
 			Log.d(TAG, "#show");
 		}
 
-		int positions[] = { 0, 0 };
-		parentView.getLocationOnScreen(positions);
-		int x = positions[0];
-		int y = positions[1];
+		int coordinates[] = { 0, 0 };
+		parentView.getLocationOnScreen(coordinates);
+		int x = coordinates[0];
+		int y = coordinates[1];
 
 		popupWindow.showAtLocation(
 				parentView.getRootView().findViewById(android.R.id.content),
 				Gravity.NO_GRAVITY, x, y);
+	}
+
+	/**
+	 * Close popupWindow
+	 */
+	public void dismiss() {
+		popupWindow.dismiss();
+	}
+
+	/**
+	 * return true if popupWindow is been showed.
+	 * 
+	 * @return
+	 */
+	public boolean isShowing() {
+		return popupWindow.isShowing();
 	}
 
 	/**

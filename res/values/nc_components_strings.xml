@@ -1,4 +1,5 @@
-/*
+<?xml version="1.0" encoding="utf-8"?>
+<!--
 	Copyright 2012 Raul de la Hoz Garrido
 
 	Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,18 +13,11 @@
 	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 	See the License for the specific language governing permissions and
 	limitations under the License.
-*/
-package nc.components;
+-->
 
-public class ComponentsConstants {
+<resources>
 
-	/**
-	 * Default constructor
-	 */
-	private ComponentsConstants() {
-	}
+    <string name="nc_components_text_increase">+</string>
+    <string name="nc_components_text_decrease">-</string>
 
-	public static final String EMPTY = "";
-	public static final String ZERO = "0";
-	public static final String ONE = "1";
-}
+</resources>

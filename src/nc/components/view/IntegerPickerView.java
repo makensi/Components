@@ -17,6 +17,7 @@ package nc.components.view;
 
 import nc.components.ComponentsConstants;
 import nc.components.R;
+import nc.components.exceptions.InvalidAttributeException;
 import nc.components.widget.FloatPopupWindow;
 import android.app.Service;
 import android.content.Context;
@@ -47,6 +48,7 @@ public class IntegerPickerView extends TextView implements OnClickListener {
 	private FloatPopupWindow popup;
 	private OnValueChangeListener onChangeValueListener;
 	private OnSetValueListener onSetValueListener;
+	private View popupView;
 	private Button increase;
 	private Button decrease;
 	private TextView quantity;
@@ -88,6 +90,74 @@ public class IntegerPickerView extends TextView implements OnClickListener {
 	}
 
 	/**
+	 * return if integer picker selector is been shown
+	 * 
+	 * @return
+	 */
+	public boolean isSelectorVisible() {
+		return popup.isShowing();
+	}
+
+	/**
+	 * Return popup current instance of integer picker selector view
+	 * 
+	 * @return
+	 */
+	public View getSelectorView() {
+		return popupView;
+	}
+
+	/**
+	 * Allows set event launched after every change of value
+	 * 
+	 * @param onChangeValueListener
+	 */
+	public void setOnValueChangeListener(
+			OnValueChangeListener onChangeValueListener) {
+		this.onChangeValueListener = onChangeValueListener;
+	}
+
+	/**
+	 * Set event launched after close popup
+	 * 
+	 * @param onSetValueListener
+	 */
+	public void setOnSetValueListener(OnSetValueListener onSetValueListener) {
+		this.onSetValueListener = onSetValueListener;
+	}
+
+	/**
+	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	 */
+	@Override
+	public void onClick(View view) {
+		if (Log.isLoggable(TAG, Log.DEBUG)) {
+			Log.d(TAG, "#onClick");
+		}
+		// checking that value was not valid or empty
+		String currentText = getText().toString();
+		if (!isPositiveInteger(currentText)) {
+			throw new InvalidAttributeException(
+					"Value isn't an integer greater than 0");
+		}
+		// set text
+		quantity.setText(currentText);
+		popup.show(view);
+	}
+
+	/**
+	 * Added to avoid leak exception after activity restore. Force dismiss after
+	 * activity detached from window manager
+	 * 
+	 * @see android.widget.TextView#onDetachedFromWindow()
+	 */
+	@Override
+	protected void onDetachedFromWindow() {
+		super.onDetachedFromWindow();
+		popup.dismiss();
+	}
+
+	/**
 	 * Init method
 	 * 
 	 * @param context
@@ -116,11 +186,14 @@ public class IntegerPickerView extends TextView implements OnClickListener {
 		// inflating view & and views
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Service.LAYOUT_INFLATER_SERVICE);
-		View viewRoot = (View) inflater.inflate(
+		popupView = (View) inflater.inflate(
 				R.layout.nc_components_integer_picker, null);
-		increase = (Button) viewRoot.findViewById(R.id.increase_quantity);
-		decrease = (Button) viewRoot.findViewById(R.id.decrease_quantity);
-		quantity = (TextView) viewRoot.findViewById(R.id.quantity_text);
+		increase = (Button) popupView
+				.findViewById(R.id.nc_components_increase_quantity);
+		decrease = (Button) popupView
+				.findViewById(R.id.nc_components_decrease_quantity);
+		quantity = (TextView) popupView
+				.findViewById(R.id.nc_components_quantity_text);
 
 		// set disable increase button if start value is 0
 		decrease.setEnabled(!getText().toString().equals(
@@ -173,41 +246,26 @@ public class IntegerPickerView extends TextView implements OnClickListener {
 		});
 
 		// set popup content view
-		popup.setContentView(viewRoot);
+		popup.setContentView(popupView);
 	}
 
 	/**
-	 * (non-Javadoc)
+	 * Just check if text is an integer greater than 0.
 	 * 
-	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	 * @param text
+	 * @return
 	 */
-	@Override
-	public void onClick(View view) {
-		if (Log.isLoggable(TAG, Log.DEBUG)) {
-			Log.d(TAG, "#onClick");
+	private boolean isPositiveInteger(String text) {
+		boolean result = false;
+		try {
+			int value = Integer.parseInt(text);
+			if (value >= 0) {
+				result = true;
+			}
+		} catch (Exception e) {
+			// number or any exception is silenced
 		}
-		// set text
-		quantity.setText(getText());
-		popup.show(view);
-	}
-
-	/**
-	 * Allows set event launched after every change of value
-	 * 
-	 * @param onChangeValueListener
-	 */
-	public void setOnValueChangeListener(
-			OnValueChangeListener onChangeValueListener) {
-		this.onChangeValueListener = onChangeValueListener;
-	}
-
-	/**
-	 * Set event launched after close popup
-	 * 
-	 * @param onSetValueListener
-	 */
-	public void setOnSetValueListener(OnSetValueListener onSetValueListener) {
-		this.onSetValueListener = onSetValueListener;
+		return result;
 	}
 
 	/**

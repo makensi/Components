@@ -13,17 +13,21 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package nc.components;
+package nc.components.exceptions;
 
-public class ComponentsConstants {
+/**
+ * This exception represent any error produced by an attribute that not match
+ * with expected kind. I.e: IntegerPickerView android:text should be an Integer
+ * higher than 0
+ * 
+ * @author makensi
+ * 
+ */
+public class InvalidAttributeException extends RuntimeException {
 
-	/**
-	 * Default constructor
-	 */
-	private ComponentsConstants() {
+	private static final long serialVersionUID = 1L;
+
+	public InvalidAttributeException(String msg) {
+
 	}
-
-	public static final String EMPTY = "";
-	public static final String ZERO = "0";
-	public static final String ONE = "1";
 }
