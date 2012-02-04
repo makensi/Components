@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- 
+/*
 	Copyright 2012 Raul de la Hoz Garrido
 
 	Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,8 +12,27 @@
 	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 	See the License for the specific language governing permissions and
 	limitations under the License.
- -->
- 
-<resources>
-    <string name="app_name">ComponentTest</string>
-</resources>
+ */
+package nc.components.activity;
+
+import nc.components.R;
+import android.app.Activity;
+import android.os.Bundle;
+
+/**
+ * Activity created to test integer picker
+ * 
+ * @author makensi
+ * 
+ */
+public class IntegerPickerTestActivity extends Activity {
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		setContentView(R.layout.nc_components_integer_picker_test_activity);
+
+	}
+	
+}
