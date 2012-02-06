@@ -83,7 +83,7 @@ public class IntegerPickerTestActivityTest extends
 	/**
 	 * Verify that several properties are correctly setted
 	 */
-	public void testProperties() {
+	public void testPreconditions() {
 		assertTrue("IntegerPicker is not clickable",
 				integerPickerView.isClickable());
 		assertFalse("Integer picker selector is been shown!",
