@@ -15,14 +15,14 @@
 	limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="nc.components"
+    package="nc.components.test"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk android:minSdkVersion="10" />
 
     <application>
-        <activity android:name=".activity.IntegerPickerTestActivity" >
+        <activity android:name=".test.activity.IntegerPickerTestActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

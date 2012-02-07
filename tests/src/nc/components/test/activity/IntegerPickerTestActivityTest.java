@@ -13,7 +13,7 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
  */
-package nc.components.activity;
+package nc.components.test.activity;
 
 import nc.components.ComponentsConstants;
 import nc.components.R;
