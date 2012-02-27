@@ -17,7 +17,6 @@ package nc.components.widget;
 
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -36,9 +35,6 @@ import android.widget.PopupWindow.OnDismissListener;
  */
 public class FloatPopupWindow {
 
-	// constants
-	private static final String TAG = FloatPopupWindow.class.getSimpleName();
-
 	// properties
 	private PopupWindow popupWindow;
 
@@ -48,9 +44,6 @@ public class FloatPopupWindow {
 	 * @param context
 	 */
 	public FloatPopupWindow(Context context) {
-		if (Log.isLoggable(TAG, Log.DEBUG)) {
-			Log.d(TAG, "#constructor");
-		}
 		popupWindow = new PopupWindow(context);
 		// properties
 		popupWindow.setTouchable(true);
@@ -83,9 +76,6 @@ public class FloatPopupWindow {
 	 * @param contentView
 	 */
 	public void setContentView(View contentView) {
-		if (Log.isLoggable(TAG, Log.DEBUG)) {
-			Log.d(TAG, "#setContentView");
-		}
 		popupWindow.setContentView(contentView);
 	}
 
@@ -95,10 +85,6 @@ public class FloatPopupWindow {
 	 * @param parentView
 	 */
 	public void show(View parentView) {
-		if (Log.isLoggable(TAG, Log.DEBUG)) {
-			Log.d(TAG, "#show");
-		}
-
 		int coordinates[] = { 0, 0 };
 		parentView.getLocationOnScreen(coordinates);
 		int x = coordinates[0];
@@ -132,9 +118,6 @@ public class FloatPopupWindow {
 	 * @param dismissListener
 	 */
 	public void setOnDismissListener(OnDismissListener dismissListener) {
-		if (Log.isLoggable(TAG, Log.DEBUG)) {
-			Log.d(TAG, "#setOnDismissListener");
-		}
 		popupWindow.setOnDismissListener(dismissListener);
 	}
 

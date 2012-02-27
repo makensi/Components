@@ -22,7 +22,6 @@ import nc.components.widget.FloatPopupWindow;
 import android.app.Service;
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -40,9 +39,6 @@ import android.widget.TextView;
  * 
  */
 public class IntegerPickerView extends TextView implements OnClickListener {
-
-	// contstants
-	private static final String TAG = IntegerPickerView.class.getSimpleName();
 
 	// properties
 	private FloatPopupWindow popup;
@@ -131,9 +127,6 @@ public class IntegerPickerView extends TextView implements OnClickListener {
 	 */
 	@Override
 	public void onClick(View view) {
-		if (Log.isLoggable(TAG, Log.DEBUG)) {
-			Log.d(TAG, "#onClick");
-		}
 		// checking that value was not valid or empty
 		String currentText = getText().toString();
 		if (!isPositiveInteger(currentText)) {
@@ -163,10 +156,6 @@ public class IntegerPickerView extends TextView implements OnClickListener {
 	 * @param context
 	 */
 	private void init(Context context) {
-		if (Log.isLoggable(TAG, Log.DEBUG)) {
-			Log.d(TAG, "#init");
-		}
-
 		// register click event
 		this.setOnClickListener(this);
 
@@ -203,10 +192,6 @@ public class IntegerPickerView extends TextView implements OnClickListener {
 
 			@Override
 			public void onClick(View v) {
-				if (Log.isLoggable(TAG, Log.DEBUG)) {
-					Log.d(TAG, "increase#setOnClickListener#onclick");
-				}
-
 				Integer value = Integer.parseInt(getText().toString());
 				value++;
 				setText(value.toString());
@@ -224,10 +209,6 @@ public class IntegerPickerView extends TextView implements OnClickListener {
 
 			@Override
 			public void onClick(View v) {
-				if (Log.isLoggable(TAG, Log.DEBUG)) {
-					Log.d(TAG, "decrease#setOnClickListener#onclick");
-				}
-
 				Integer value = Integer.parseInt(getText().toString());
 				if (value > 0) {
 					value--;
